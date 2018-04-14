@@ -6,10 +6,16 @@ functions:
   reacthello:
     lang: dockerfile
     handler: ./ReactHello
-    image: reacthello
+    image: react-hello
 
 functions:
   reactprops:
     lang: dockerfile
     handler: ./ReactProps
-    image: reactprops
+    image: react-props
+
+functions:
+  reactBtn:
+    lang: dockerfile
+    handler: ./ReactButton
+    image: react-btn

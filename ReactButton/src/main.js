@@ -14,6 +14,8 @@ const isJsonString = str => {
 
 getStdin()
   .then(propsString => {
+    // example input:
+    // {"label":"click me", "onClick":"this.handle.bind(this)", "className":"btn btn-primary"}
     let props = propsString;
     if (props !== '' && isJsonString(props)) {
       props = JSON.parse(propsString);

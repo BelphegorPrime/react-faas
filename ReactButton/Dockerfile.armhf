@@ -1,0 +1,20 @@
+FROM alpine:3.6
+
+RUN apk --no-cache add nodejs nodejs-npm
+
+ADD https://github.com/openfaas/faas/releases/download/0.7.9/fwatchdog-armhf /usr/bin/fwatchdog
+RUN chmod +x /usr/bin/fwatchdog
+
+COPY package.json .
+
+RUN npm i
+
+COPY handler.js .
+
+RUN npm run build
+
+ENV fprocess="node bundle.js"
+
+HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
+
+CMD ["fwatchdog"]

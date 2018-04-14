@@ -1,13 +1,11 @@
-"use strict";
+import React from 'react';
+import ReactDomServer from 'react-dom/server';
 
-const React = require('react');
-const ReactDomServer = require('react-dom/server');
+const elemToString = elem => ReactDomServer.renderToString(elem);
 
-const elemToString = (elem) => ReactDomServer.renderToString(elem);
-
-module.exports = (props) => {
-    if(props.name){
-        return elemToString(<div>{props.name}</div>);
-    }
-    return "no JSON-object with key name provided";
+module.exports = props => {
+  if (props.name) {
+    return elemToString(<div>{props.name}</div>);
+  }
+  return 'no JSON-object with key name provided';
 };
