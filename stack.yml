@@ -1,0 +1,15 @@
+provider:
+  name: faas
+  gateway: http://localhost:9080  # can be a remote server
+
+functions:
+  reacthello:
+    lang: dockerfile
+    handler: ./ReactHello
+    image: reacthello
+
+functions:
+  reactprops:
+    lang: dockerfile
+    handler: ./ReactProps
+    image: reactprops
